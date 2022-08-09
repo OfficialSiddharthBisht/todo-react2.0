@@ -18,6 +18,16 @@ export const Signup = () => {
     ));
   }
   const handleSignup =() =>{
+    let isValid = true;
+    Object.values(signupData).forEach(el =>{
+      if(!el){
+        isValid = false;
+      }
+    })
+    if(!isValid){
+      alert("Please fill all the details");
+      return;
+    }
     axios({
       method : "post",
       url : "https://masai-api-mocker.herokuapp.com/auth/register",
