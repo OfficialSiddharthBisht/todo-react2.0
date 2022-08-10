@@ -1,5 +1,8 @@
 import React from 'react'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux';
+import {signupSuccess, signupError , signupLoading} from '../store/auth/actions'
+import {Navigate} from 'react-router-dom';
 const initailState = {
   name: "",
   email: "",
@@ -10,7 +13,8 @@ const initailState = {
 };
 export const Signup = () => {
   const [signupData , setSignupData] = React.useState(initailState);
-  // console.log(Object.values(signupData));
+  const dispatch = useDispatch();
+  const token = useSelector(state => state.token);
   const handleChange = (e)=>{
     const {name , value} = e.target;
     setSignupData(prev =>(
@@ -28,15 +32,21 @@ export const Signup = () => {
       alert("Please fill all the details");
       return;
     }
+    dispatch(signupLoading());
     axios({
       method : "post",
       url : "https://masai-api-mocker.herokuapp.com/auth/register",
       data : signupData
     }).then(res=>{
-      
+      dispatch(signupSuccess());
+      setSignupData(initailState);
     }).catch(res =>{
-
+      dispatch(signupError());
     })
+  }
+
+  if(token){
+    return <Navigate to = "/" />
   }
   return (
     <div>
