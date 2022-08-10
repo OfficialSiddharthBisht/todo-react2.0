@@ -1,10 +1,11 @@
-import {SIGNUP_ERROR, SIGNUP_LOADING, SIGNUP_SUCCESS ,LOGIN_ERROR,LOGIN_LOADING,LOGIN_SUCCESS, LOGOUT} from './actionTypes';
+import {SIGNUP_ERROR, SIGNUP_LOADING, SIGNUP_SUCCESS ,LOGIN_ERROR,LOGIN_LOADING,LOGIN_SUCCESS, LOGOUT, FEED_USERDETAILS, FEED_USERDETAILS_ERROR} from './actionTypes';
 
 const initialState ={
     loading : false,
     error : false,
     token : null,
-    message : ""
+    message : "",
+    userDetails : {}
 } 
 
 export const reducer = (state = initialState , {type , payload}) =>{
@@ -48,6 +49,17 @@ export const reducer = (state = initialState , {type , payload}) =>{
                 return{
                     ...initialState,
                     
+                }
+            case FEED_USERDETAILS :
+                return {
+                    ...state,
+                    error : false,
+                    userDetails : payload
+                }
+            case FEED_USERDETAILS_ERROR:
+                return{
+                    ...state,
+                    error : true,
                 }
         default:
             return state;

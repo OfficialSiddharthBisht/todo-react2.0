@@ -7,3 +7,6 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
 
 export const LOGOUT = "LOGOUT";
+
+export const FEED_USERDETAILS = "FEED_USERDETAILS";
+export const FEED_USERDETAILS_ERROR = "FEED_USERDETAILS_ERROR";

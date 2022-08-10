@@ -1,4 +1,4 @@
-import {SIGNUP_ERROR , SIGNUP_SUCCESS ,SIGNUP_LOADING, LOGIN_ERROR ,LOGIN_SUCCESS , LOGIN_LOADING, LOGOUT} from './actionTypes';
+import {SIGNUP_ERROR , SIGNUP_SUCCESS ,SIGNUP_LOADING, LOGIN_ERROR ,LOGIN_SUCCESS , LOGIN_LOADING, LOGOUT, FEED_USERDETAILS, FEED_USERDETAILS_ERROR} from './actionTypes';
 
 //--------------Signup --------------- 
 export const signupLoading = () =>{
@@ -42,5 +42,17 @@ export const loginError = () =>{
 export const logout = () =>{
     return{
         type : LOGOUT
+    }
+}
+export const feedUserDetails = (payload) =>{
+    return{
+        type: FEED_USERDETAILS,
+        payload
+    }
+}
+
+export const feedUserDetailsError = () =>{
+    return{
+        type : FEED_USERDETAILS_ERROR
     }
 }

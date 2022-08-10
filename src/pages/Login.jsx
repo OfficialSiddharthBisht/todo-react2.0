@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { useDispatch , useSelector } from 'react-redux';
-import {loginSuccess, loginError , loginLoading} from '../store/auth/actions'
+import {loginSuccess, loginError , loginLoading, feedUserDetails, feedUserDetailsError} from '../store/auth/actions'
 import { Navigate } from 'react-router-dom';
 const initailState = {
   username :"",
@@ -35,6 +35,17 @@ export const Login = () => {
       data : loginData
     }).then(res=>{
       dispatch(loginSuccess(res.data.token));
+      axios({
+        method : "get",
+        url : `https://masai-api-mocker.herokuapp.com/user/${loginData.username}`,
+        headers : {
+          Authorization : `Bearer ${res.data.token}`
+        }
+      }).then(res =>{
+        dispatch(feedUserDetails(res.data));
+      }).catch(res =>{
+        dispatch(feedUserDetailsError());
+      })
     }).catch(res =>{
       dispatch(loginError());
     })
