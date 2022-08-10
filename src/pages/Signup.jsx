@@ -32,6 +32,10 @@ export const Signup = () => {
       method : "post",
       url : "https://masai-api-mocker.herokuapp.com/auth/register",
       data : signupData
+    }).then(res=>{
+      
+    }).catch(res =>{
+
     })
   }
   return (
