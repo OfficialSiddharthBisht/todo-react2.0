@@ -1,4 +1,4 @@
-import {SIGNUP_ERROR , SIGNUP_SUCCESS ,SIGNUP_LOADING, LOGIN_ERROR ,LOGIN_SUCCESS , LOGIN_LOADING} from './actionTypes';
+import {SIGNUP_ERROR , SIGNUP_SUCCESS ,SIGNUP_LOADING, LOGIN_ERROR ,LOGIN_SUCCESS , LOGIN_LOADING, LOGOUT} from './actionTypes';
 
 //--------------Signup --------------- 
 export const signupLoading = () =>{
@@ -36,5 +36,11 @@ export const loginSuccess = (payload) =>{
 export const loginError = () =>{
     return{
         type : LOGIN_ERROR
+    }
+}
+
+export const logout = () =>{
+    return{
+        type : LOGOUT
     }
 }
