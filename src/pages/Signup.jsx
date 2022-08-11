@@ -39,6 +39,7 @@ export const Signup = () => {
       data : signupData
     }).then(res=>{
       dispatch(signupSuccess());
+      alert("Sign Up Successful");
       setSignupData(initailState);
     }).catch(res =>{
       dispatch(signupError());
