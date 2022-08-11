@@ -24,14 +24,42 @@ export const NewTask = () => {
         }))
     }   
     const handleRadio = (e) =>{
-        const [name , checked] = e.target;
+        // const [name , checked] = e.target;
         const obj = {
             todo: false,
             inprogress : false,
             done : false,
-            [name] : checked
+            // [name] : checked
         }
         setRadioState(obj);
+    }
+    const handleCreate = () =>{
+        const tagesArr = [];
+        for(const key in checkedState){
+            if(Object.hasOwnProperty.call(checkedState,key)){
+                const element = checkedState[key];
+                if(element){
+                    tagesArr.push(key);
+                }
+            }
+        }
+        const task_status = "";
+        for( const key in radioState){
+            if(Object.hasOwnProperty.call(radioState, key)){
+                const element = radioState[key];
+                if(element){
+                    task_status = key;
+                    break;
+                }
+            }
+        }
+        const obj = {
+            title,
+            discription: description,
+            tags: tagesArr,
+            task_status,
+            subTask,
+        }
     }
     return (
         <div style={{display:'flex' , justifyContent:'space-around', marginBottom:'20px'}}>
@@ -64,7 +92,7 @@ export const NewTask = () => {
                 <SubTaskAdder subTask = {subTask}  setSubTask = {setSubTask}/>
             </div>
             <div>
-                <button>Create Task</button>
+                <button onClick={handleCreate}>Create Task</button>
             </div>
         </div>
     )
