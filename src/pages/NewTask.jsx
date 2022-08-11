@@ -10,6 +10,11 @@ export const NewTask = () => {
         personal : false,
         others : false
     });
+    const [radioState , setRadioState] = React.useState({
+        todo: false,
+        inprogress : false,
+        done : false,
+    })
 
     const handleCheckChange = (e) =>{
         const {checked , name} = e.target;
@@ -18,6 +23,16 @@ export const NewTask = () => {
             [name] : checked
         }))
     }   
+    const handleRadio = (e) =>{
+        const [name , checked] = e.target;
+        const obj = {
+            todo: false,
+            inprogress : false,
+            done : false,
+            [name] : checked
+        }
+        setRadioState(obj);
+    }
     return (
         <div style={{display:'flex' , justifyContent:'space-around', marginBottom:'20px'}}>
             <div>
@@ -29,11 +44,11 @@ export const NewTask = () => {
                 </div>
                 <div className="radio_basic">
                     <label htmlFor="todo">Todo</label>
-                    <input type="radio" name="taskstatus" id="todo" /><br />
+                    <input type="radio" onChange={handleRadio} name="taskstatus" id="todo" /><br />
                     <label htmlFor="inprogress">In Progress</label>
-                    <input type="radio" name="taskstatus" id="inprogress" /><br />
+                    <input type="radio" onChange={handleRadio} name="taskstatus" id="inprogress" /><br />
                     <label htmlFor="done">Done</label>
-                    <input type="radio" name="taskstatus" id="done" />
+                    <input type="radio" onChange={handleRadio} name="taskstatus" id="done" />
                     <br/> <br/><br/>
                 </div>
                 <div className="checkDiv">
