@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+.input_basic{
+  margin-bottom: 20px;
+}
+.textarea_basic{
+  margin-bottom: 20px;
+}
+.radio_basic{
+  margin-bottom: 50px;
+}
